@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Cappu 💖</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(135deg, #ffd1dc, #ffb6c1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Floating hearts */
+.heart {
+  position: absolute;
+  opacity: 0.3;
+  animation: float 7s linear infinite;
+}
+@keyframes float {
+  from { transform: translateY(100vh); opacity: 0; }
+  50% { opacity: 1; }
+  to { transform: translateY(-10vh); opacity: 0; }
+}
+
+/* Main card */
+.card {
+  background: rgba(255,255,255,0.95);
+  width: 92%;
+  max-width: 420px;
+  padding: 30px;
+  border-radius: 28px;
+  text-align: center;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.15);
+  position: relative;
+  z-index: 2;
+}
+
+/* Buttons area */
+.buttons {
+  position: relative;
+  height: 90px;
+  margin-top: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* YES */
+#yesBtn {
+  background: linear-gradient(45deg, #ff4d6d, #ff758f);
+  border: none;
+  color: white;
+  padding: 14px 36px;
+  font-size: 18px;
+  border-radius: 30px;
+  cursor: pointer;
+  z-index: 2;
+  box-shadow: 0 12px 25px rgba(255,77,109,0.45);
+}
+
+/* NO – instant movement (no lag) */
+#noBtn {
+  position: absolute;
+  left: 75%;
+  top: 22px;
+  background: #eeeeee;
+  color: #555;
+  padding: 10px 18px;
+  font-size: 14px;
+  border-radius: 22px;
+  user-select: none;
+  transition: none; /* IMPORTANT: instant jump */
+}
+
+.hidden {
+  display: none;
+}
+
+/* Result */
+.gif-box img {
+  width: 200px;
+  border-radius: 18px;
+  margin: 15px 0;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(255,0,100,0.25);
+}
+
+.letter {
+  background: #fff;
+  padding: 18px;
+  border-radius: 18px;
+  margin-top: 18px;
+  font-size: 14px;
+  color: #555;
+}
+
+.signature {
+  margin-top: 16px;
+  font-size: 22px;
+  color: #ff4d6d;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+/* EASTER LETTER OVERLAY */
+.easter-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(255,182,193,0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.easter-box {
+  background: #fff;
+  padding: 30px;
+  border-radius: 24px;
+  max-width: 340px;
+  text-align: center;
+  font-size: 15px;
+  color: #555;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+  animation: fadeIn 0.35s ease;
+}
+
+.close-btn {
+  margin-top: 18px;
+  background: linear-gradient(45deg, #ff4d6d, #ff758f);
+  color: white;
+  border: none;
+  padding: 10px 26px;
+  border-radius: 26px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+@keyframes fadeIn {
+  from { transform: scale(0.88); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Floating hearts -->
+<script>
+for (let i = 0; i < 18; i++) {
+  const h = document.createElement("div");
+  h.className = "heart";
+  h.innerHTML = "💖";
+  h.style.left = Math.random() * 100 + "vw";
+  h.style.fontSize = (14 + Math.random()*16) + "px";
+  h.style.animationDelay = Math.random() * 5 + "s";
+  document.body.appendChild(h);
+}
+</script>
+
+<div class="card">
+
+  <!-- QUESTION -->
+  <div id="question">
+    <h2>Cappu 💞</h2>
+    <p>I have something special to ask you…</p>
+    <h3>Will you be my Valentine? 💘</h3>
+
+    <div class="buttons">
+      <button id="yesBtn" onclick="sayYes()">Yes 💞</button>
+
+      <button id="noBtn"
+        onmouseenter="moveNo()"
+        onmousedown="moveNo()"
+        ontouchstart="moveNo(); return false;"
+        onclick="return false;">
+        No 🙈
+      </button>
+    </div>
+  </div>
+
+  <!-- RESULT -->
+  <div id="result" class="hidden">
+    <h2>My Heart Chose You 💘</h2>
+
+    <div class="gif-box" onclick="easterEgg()">
+      <img src="https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif" alt="Love">
+      <div style="font-size:12px;color:#777;">(tap me 💖)</div>
+    </div>
+
+    <p>
+      Cappu, choosing you feels natural —
+      like my heart always knew where it belonged ❤️
+    </p>
+
+    <p><i>
+      “Kuch toh hai tujhse raabta,
+      kaise hum jaane yeh dil bata…” 🎶
+    </i></p>
+
+    <div class="letter">
+      This isn’t just a Valentine question…<br><br>
+      It’s a quiet promise of care, laughter on ordinary days,
+      comfort in silence, and choosing you —
+      today, tomorrow, and always 💞
+    </div>
+
+    <div class="signature">– PRASH</div>
+  </div>
+
+</div>
+
+<!-- MUSIC -->
+<audio id="bgMusic" loop preload="auto" playsinline>
+  <source src="https://cdn.pixabay.com/audio/2023/03/06/audio_4e2d9d8a63.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+function moveNo() {
+  const noBtn = document.getElementById("noBtn");
+  const parent = document.querySelector(".buttons");
+
+  const minX = parent.clientWidth * 0.45;
+  const maxX = parent.clientWidth - noBtn.offsetWidth - 10;
+  const maxY = parent.clientHeight - noBtn.offsetHeight - 10;
+
+  noBtn.style.left = (minX + Math.random() * (maxX - minX)) + "px";
+  noBtn.style.top = (Math.random() * maxY) + "px";
+}
+
+function sayYes() {
+  document.getElementById("question").classList.add("hidden");
+  document.getElementById("result").classList.remove("hidden");
+
+  const music = document.getElementById("bgMusic");
+  music.volume = 0.6;
+  music.play().catch(()=>{});
+}
+
+function easterEgg() {
+  const o = document.createElement("div");
+  o.className = "easter-overlay";
+  o.innerHTML = `
+    <div class="easter-box">
+      <h2>💖 Just Between Us 💖</h2>
+      <p>
+        You found the hidden surprise, Cappu 💕<br><br>
+        This little page is my quiet way of saying that
+        choosing you is my favorite thing —
+        not just today, but always.<br><br>
+        Forever doesn’t feel scary with you…<br>
+        it feels warm, safe, and full of love 💞
+      </p>
+      <button class="close-btn" onclick="this.closest('.easter-overlay').remove()">
+        Okay 💖
+      </button>
+    </div>`;
+  document.body.appendChild(o);
+}
+</script>
+
+</body>
+</html>
